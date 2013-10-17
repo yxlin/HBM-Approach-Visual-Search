@@ -4,8 +4,8 @@ HBM-Approach-Visual-Search
 Using HBM approach to test Palmer et al's (2011) and Wolfe et al's (2010) benchmark visual search (slightly modified) 
 paradigm in the context of target-distracters relation. The aim of this project is to see if we can probe, if there is 
 any,high-level cognitive processes, using HBM.  The target cognitive process is the grouping effect (i.e., homogeneous 
-distracter).  We collected, relatively speaking, a small data set, using a very similar paradigm  and tested it with HBM.
-The results were compared with Palmer et al's (2011) and Wolfe et al's (2010) finding.  We expect the grouping effect 
+distracters).  We collected, relatively speaking, a small data set, using a very similar paradigm  and tested it with HBM.
+The results were compared with Palmer et al's (2011) and Wolfe et al's (2010) findings.  We expect the grouping effect 
 will influence the distribution shape, but not the scale and shift (i.e., the presumed threshold index).    
 
 This is a work in progress. Please inform the authors (i.e., me, (I am one of them)), if you find some information (R 
