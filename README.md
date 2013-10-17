@@ -10,3 +10,6 @@ distracter).  We expect the grouping effect will influence the distribution shap
 This is a work in progress. Please inform the authors (i.e., me, (I am one of them)), if you find some information here 
 is useful for your work and wish to use it.  I am very welcome for any comments that help me to improve the work. If you
 find any faults or mistakes I made here, please drop me a email to inform me. 
+
+We thank Even Palmer and Jeremy Wolfe kindly provide their visual search data at 
+http://search.bwh.harvard.edu/new/data_set.html, as well as their permission for us use the data set. 
