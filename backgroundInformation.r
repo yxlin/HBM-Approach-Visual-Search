@@ -12,8 +12,8 @@ loadedPackages <-c("plyr","plotrix", "car", "grid")
 suppressPackageStartupMessages(lapply(loadedPackages, require, character.only=TRUE));
 
 rm(list=ls())
-load("featureConjBk.RData")
-load("twoFiveBk.RData")
+load("./data/featureConjBk.RData")
+load("./data/twoFiveBk.RData")
 
 
 # Because two groups of participant separately took part in 
@@ -35,11 +35,16 @@ bkData <- rbind(featureConjbk, twoFivebk)
 
 # Print out the range, mean and standard error of age for 
 # the participants
-range(bkData$Age)
-mean(bkData$Age)
-std.error(bkData$Age)
+range(bkData$Age)     # [1] 18 22
+mean(bkData$Age)      # [1] 18.86364
+std.error(bkData$Age) # [1] 0.1510741
+
 
 # Print out male/female number of participants as well as 
 # right/left handers 
 table(bkData$Sex)
+# Female   Male 
+# 35      9
 table(bkData$handedness)
+# l  r 
+# 6 38 
