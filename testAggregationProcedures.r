@@ -15,14 +15,14 @@ rm(list=ls())
 # different data frame.
 # 2. These data sets keep the original form without trimming off
 # outliers 
-load('./data/featureWithSubjInfo.RData')
+load('./data/mydata/featureWithSubjInfo.RData')
 featureT2 <- subset(x0, 
                   rt >= 200 &   # rt greater and equal to 200 ms
                   rt <= 4000 &  # less and equal to 4000 ms 
                   keyStatus == "correct" & # correct responses only
                   subj != "d11")# d11 responded at a chance level 
 
-load('./data/conjWithSubjInfo.RData')
+load('./data/mydata/conjWithSubjInfo.RData')
 conjT2 <- subset(x0, 
                  rt >= 200 & 
                  rt <= 4000 & 
@@ -30,7 +30,7 @@ conjT2 <- subset(x0,
                  subj != "d11")
 
 # 2 v 5 used a different group of participants
-load('./data/twoFiveWithSubjInfo.RData')
+load('./data/mydata/twoFiveWithSubjInfo.RData')
 twoFiveT2 <- subset(x0, 
                     rt >= 200 & 
                     rt <= 8000 & 
@@ -39,14 +39,22 @@ twoFiveT2 <- subset(x0,
 
 # These data sets did trimming at the stage when data from each 
 # participant was processed. 
-load('./data/featureT.RData')
-load('./data/conjT.RData')
-load('./data/twoFiveT.RData')
+load('./data/mydata/featureT.RData')
+load('./data/mydata/conjT.RData')
+load('./data/mydata/twoFiveT.RData')
 featureT$task <- "F"
 conjT$task <- "C"
 twoFiveT$task <- "S"
 ylinrt <- rbind(featureT, conjT, twoFiveT)
-save(ylinrt, file='./data/ylinrt.RData')
+
+# A few data organisation procedures
+ylinrt <- within(ylinrt, 
+                  task <- factor(task, levels = c("F", "C", "S") )
+)
+ylinrt$target <- ifelse(ylinrt$target == "present", "P", "A") 
+ylinrt <- within(ylinrt, target <- factor(target, levels = c("P", "A") ))
+
+save(ylinrt, file='./data/mydata/ylinrt.RData')
 
 # test to see if two different ways to organise the data reaches 
 # the same data sets.
