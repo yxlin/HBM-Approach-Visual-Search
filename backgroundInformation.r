@@ -1,5 +1,5 @@
-# Report Background Information of Research Participants
 #-------------------------------------------------------
+# Report Background Information of Research Participants
 # Author: Yishin Lin
 # Date: 17 October, 2013
 # Change log:
@@ -12,8 +12,8 @@ loadedPackages <-c("plyr","plotrix", "car", "grid")
 suppressPackageStartupMessages(lapply(loadedPackages, require, character.only=TRUE));
 
 rm(list=ls())
-load("./data/featureConjBk.RData")
-load("./data/twoFiveBk.RData")
+load("./data/mydata/featureConjBk.RData")
+load("./data/mydata/twoFiveBk.RData")
 
 
 # Because two groups of participant separately took part in 
