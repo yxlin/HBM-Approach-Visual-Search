@@ -148,7 +148,7 @@ p5 <- ggplot(avgRT.Feature,
              aes(x=factor(size), y = mean, fill=task)) + 
   geom_bar(stat="identity", position=pd, colour="black") + 
   geom_errorbar(aes(ymin=mean-se, ymax=mean+se), 
-                width=.3, position=pd)
+                width=.4, position=pd, size=2)
 barRT.Feature <- p5 + theme_bw() + 
   scale_x_discrete(name='Set size') +
   scale_y_continuous(name = "Mean RT (ms)") +
