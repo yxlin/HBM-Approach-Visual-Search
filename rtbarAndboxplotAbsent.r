@@ -9,7 +9,7 @@ load('./data/mydata/avgFC.RData')
 load('./data/mydata/avgS.RData')
 source("./functions/summarise.R")
 source("./functions/multiplot.R")
-library(ggplot2)
+library(ggplot2); library(grid)
 
 ## --------------------------------
 ## Preparing for bar plots
@@ -42,7 +42,7 @@ p1 <- ggplot(avgRT.Absent,
   geom_errorbar(aes(ymin=mean-se, ymax=mean+se), 
                 width=.3, position=pd)
 barRT <- p1 + theme_bw() + 
-  scale_x_discrete(name='Set size') +
+  scale_x_discrete(name='Display size') +
   scale_y_continuous(name = "Mean RT (ms)") +
   coord_cartesian(ylim=c(400, 1600)) +
   theme(axis.title.x = element_text(size=20), #blank(), 
@@ -65,7 +65,7 @@ p2 <- ggplot(avgErr.Absent,
   geom_errorbar(aes(ymin=errRate-se, ymax=errRate+se), 
                 width=.3, position=pd)
 barErr <- p2 +  theme_bw() + 
-  scale_x_discrete(name='Set size') +
+  scale_x_discrete(name='Display size') +
   scale_y_continuous(name = "Error rate (%)") +
   coord_cartesian(ylim=c(1, 7.5)) +
   # scale_fill_grey(name="Task") +
@@ -95,7 +95,7 @@ p3 <- ggplot(boxRT.Err.Absent,
                outlier.size=3)   
 boxrt <- p3 + theme_bw() +
   # scale_fill_grey(name="task")+ 
-  scale_x_discrete(name='Set size') +
+  scale_x_discrete(name='Display size') +
   scale_y_continuous(name = "RT (ms)") + 
   theme(axis.title.x = element_text(size=20), #blank(), 
         axis.text.x  = element_text(angle=0, size=20), #blank(),  
@@ -117,7 +117,7 @@ p4 <- ggplot(boxRT.Err.Absent,
                outlier.size=3)   
 boxErr <- p4 + theme_bw() +
   # scale_fill_grey(name="Task")+ 
-  scale_x_discrete(name='Set size') +
+  scale_x_discrete(name='Display size') +
   scale_y_continuous(name = "Error rate (%)") + 
   theme(axis.title.x = element_text(size=20), #blank(), 
         axis.text.x  = element_text(angle=0, size=20), #blank(),  
@@ -150,7 +150,7 @@ p5 <- ggplot(avgRT.Feature,
   geom_errorbar(aes(ymin=mean-se, ymax=mean+se), 
                 width=.4, position=pd, size=2)
 barRT.Feature <- p5 + theme_bw() + 
-  scale_x_discrete(name='Set size') +
+  scale_x_discrete(name='Display size') +
   scale_y_continuous(name = "Mean RT (ms)") +
   coord_cartesian(ylim=c(400, 450)) +
   theme(axis.title.x = element_text(size=20), #blank(), 
