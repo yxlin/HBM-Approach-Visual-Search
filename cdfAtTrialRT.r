@@ -38,7 +38,6 @@ ecdfP1 <- ecdfP1 +  geom_step(subset = .(rt > 0), size=2) +
         legend.position= c(.90, .10),
         legend.title = element_text(size=20),
         legend.text = element_text(size=20))
-ecdfP1
 
 jpeg(filename = "./figures/rtecdfAllLines.jpeg",
      width = 600, height = 600, units = "px", pointsize = 8,
@@ -70,7 +69,6 @@ ecdfP2 <- ecdfP2 +  geom_step(subset = .(rt > 0), size=2) +
         legend.position= c(.90, .10),
         legend.title = element_text(size=20),
         legend.text = element_text(size=20))
-ecdfP2
 
 jpeg(filename = "./figures/rtecdfTrialRT.jpeg",
      width = 600, height = 600, units = "px", pointsize = 8,
