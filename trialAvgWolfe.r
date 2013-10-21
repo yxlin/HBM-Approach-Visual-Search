@@ -29,11 +29,13 @@ wolfe2010Data$task <- factor(
   wolfe2010Data$task, levels=c('F','C','S'),
   labels=c('F','C','S'))
 
+# Re-level present and absent trial to make present trials
+# come firts
 wolfe2010Data$target <- factor(wolfe2010Data$target, 
                                levels=c('P','A'),
                                labels=c('P','A'))
 
-                               wolfe2010Data$slope <- wolfe2010Data$rt / wolfe2010Data$size 
+wolfe2010Data$slope <- wolfe2010Data$rt / wolfe2010Data$size 
 wolfe2010Data$rt.sec <- wolfe2010Data$rt / 1000
 
 # remove of the repeated column of set size  
