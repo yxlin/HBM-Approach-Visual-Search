@@ -1,8 +1,8 @@
 #-------------------------------------------------------
 # Author:      Yishin Lin
 # Date:        20 October, 2013
-# Description: This file qqnorm for each cell at RT mean 
-# level
+# Description: This file drew qqnorm for each cell at RT 
+# mean level
 #-------------------------------------------------------  
 rm(list=ls())
 load('./data/mydata/avgFC.RData')
