@@ -11,8 +11,6 @@ library(ggplot2); library(grid)
 ## --------------------------------
 ## Preparing for plotting
 ## --------------------------------
-
-#trimWolfeData$subjNum <- sub("^d", "", trimWolfeData$subj)
 ecdfwolfe <- ddply(trimWolfeData, .(size, task, target), transform, 
                     ecdf = ecdf(rt)(rt))
 ecdfwolfe$targettask <- paste(ecdfwolfe$target, ecdfwolfe$task, 
@@ -57,6 +55,10 @@ dev.off()
 ecdfP2 <- ggplot(ecdfwolfe, aes(rt, ecdf, colour = task))
 ecdfP2 <- ecdfP2 +  geom_step(subset = .(rt > 0), size=2) + 
   facet_grid(size~., as.table = F) +
+  geom_hline(yintercept = .5, linetype="longdash", 
+             color="darkorchid4") +
+  geom_hline(yintercept = .95, linetype="longdash", 
+             color="darkblue") +
   #   geom_vline(xintercept = 1300, linetype="longdash", color="darkorchid4") +
   #   geom_vline(xintercept = 1800, linetype="longdash", color="darkblue") +
   #   geom_vline(xintercept = 2600, linetype="longdash", color="black") +
