@@ -9,9 +9,11 @@ load('./data/mydata/ylinrt.RData')
 library(ggplot2); library(grid)
 
 ## --------------------------------
-## Preparing for bar plots
+## Preparing for density plots
 ## --------------------------------
 ylinrt$subjNum <- sub("^d", "", ylinrt$subj)
+ylinrt$target <- factor(ylinrt$target, levels=c('P','A'),
+                      labels=c('present','absent'))
 
 ## --------------------------------
 ## Use ggplot to build the plots
@@ -20,7 +22,7 @@ den <- ggplot(ylinrt, aes(x=rt, colour=as.numeric(subjNum),
                        group=as.numeric(subjNum)))
 den <- den + geom_density(fill=NA, size=.5) +
     facet_grid(size~task*target, scales="free") + theme_bw() + 
-    scale_x_continuous(breaks=seq(0, 10000, 2500), name="RT (ms)") + 
+    scale_x_continuous(breaks=seq(0, 10000, 1500), name="RT (ms)") + 
     scale_y_continuous(breaks=seq(0, 1, .004), name ="Density") +
     coord_cartesian(xlim = c(0, 4300)) +
     theme(axis.title.x = element_text(size=20), #element_blank(), 
@@ -35,7 +37,7 @@ den <- den + geom_density(fill=NA, size=.5) +
           legend.text = element_text(size=20))
 
 jpeg(filename = "./figures/densityTrialLevel.jpeg",
-     width = 900, height = 900, units = "px", pointsize = 8,
+     width = 800, height = 600, units = "px", pointsize = 8,
      quality = 100, bg = "white")
 den;
 dev.off()

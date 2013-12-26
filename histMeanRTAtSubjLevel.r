@@ -16,6 +16,8 @@ library(ggplot2); library(grid)
 avg1 <- rbind(avgFC, avgS)
 avg1$task <- factor(avg1$task, levels=c('F','C','S'),
       labels=c('F','C','S'))
+avg1$target <- factor(avg1$target, levels=c('P','A'),
+                    labels=c('present','absent'))
 
 ## --------------------------------
 ## Use ggplot to contruct the plots
@@ -27,8 +29,8 @@ baseP <- ggplot(avg1, aes(x=mean)) +
          facet_grid(size~task*target, scales="fixed", space="fixed")
 m <- baseP +  theme_bw() +
     coord_cartesian(xlim = c(0, 3000)) +
-    scale_x_continuous(breaks=seq(0, 3000, 800), name="Mean RT (ms)") + 
-    scale_y_continuous(breaks=seq(0, 1, .010), name ="Density") + 
+    scale_x_continuous(breaks=seq(0, 5000, 800), name="Mean RT (ms)") + 
+    scale_y_continuous(breaks=seq(0, 1, .004), name ="Density") + 
     theme(axis.title.x = element_text(size=20), #blank(), 
      axis.text.x  = element_text(angle=90, size=20), #blank(),  
      axis.title.y = element_text(angle=90, size=20),
