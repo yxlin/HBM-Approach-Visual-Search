@@ -4,12 +4,12 @@
 # Description: 
 # 1. The file performs trial averaging. It calculates the 
 # cell mean by averaging each RT across trials in an 
-# experiment conditon.
-# 2. We have 4 (display size) x 2 (target present versus 
-# absent), 8 conditions.
+# experiment condition.
+# 2. We have, 4 (display sizes) x 2 (target present versus 
+# absent) = 8 conditions.
 # 3. The feature and conjunction search should be calculated 
 # seprately from the spatial configuration search, because
-# the two data sets compose of two different groups of 
+# the two data sets were from two different groups of 
 # participants.
 #-------------------------------------------------------  
 

@@ -12,7 +12,8 @@ rm(list=ls())
 # 1. Because during data merging, I used always x0 as a container to 
 # append data, it is necessary to store each task (feature, 
 # conjunction and spatial configuration tasks) separately into
-# different data frame.
+# different data frame (otherwise different x0's will overwrite each
+# other).
 # 2. These data sets keep the original form without trimming off
 # outliers 
 load('./data/mydata/featureWithSubjInfo.RData')
@@ -47,7 +48,7 @@ conjT$task <- "C"
 twoFiveT$task <- "S"
 ylinrt <- rbind(featureT, conjT, twoFiveT)
 
-# A few data organisation procedures
+# A few data cleaning procedures
 ylinrt <- within(ylinrt, 
                   task <- factor(task, levels = c("F", "C", "S") )
 )
