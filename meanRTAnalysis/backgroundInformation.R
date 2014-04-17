@@ -1,5 +1,5 @@
 #-------------------------------------------------------
-# Research Participants Background information  
+# Research Participants background information  
 # Author: Yishin Lin
 # Date: 17 October, 2013
 # Change log:
