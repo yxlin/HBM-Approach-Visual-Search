@@ -75,7 +75,6 @@ errRate <- (err/(err+corr))*100
 avg0 <- cbind(rawWolfe, errRate)
 avg1 <- na.exclude(avg0)
 
-
 # Clearing up and save raw, averaged, trimmed data-------------------
 rm(list=setdiff(ls(), c("rawWolfeData", "avg1",
                         "trimWolfeData")))
