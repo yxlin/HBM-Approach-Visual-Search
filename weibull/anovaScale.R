@@ -1,7 +1,7 @@
 # Disclaimer---------------------------------------------------
 # Author:      Yishin Lin
 # Date:        24 December, 2013
-# Description: Calculate ANOVA and eta square at scale
+# Description: Calculate ANOVA and eta square at scale parameter
 rm(list=ls())
 load('./data/myData/weibull.RData')
 source('./functions/rm.anova.R')
