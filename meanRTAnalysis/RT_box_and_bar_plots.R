@@ -2,7 +2,7 @@
 # Author:      Yishin Lin
 # Date:        18 October, 2013
 # Description: This codes draws the bar- and box-plots for the mean
-# RTs and mean error rates at the target present trials.
+# RTs and mean error rates at the target present and absent trials.
 
 # Load data and packages ---------------------------------------------
 rm(list=ls())
