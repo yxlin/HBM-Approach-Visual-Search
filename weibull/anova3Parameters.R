@@ -2,7 +2,7 @@
 # Author:      Yishin Lin
 # Date:        24 December, 2013
 # Description: Calculate ANOVA and eta square for the 3 Weibull
-# parameter
+# parameters
 rm(list=ls())
 load('./data/myData/weibull.RData')
 source('./functions/rm.anova.R')
@@ -32,6 +32,3 @@ idata <- data.frame(size)
 scaleOut <- wb.anova('scale')
 shapeOut <- wb.anova('shape')
 shiftOut <- wb.anova('shift')
-scaleOut[1]
-shapeOut[1]
-shiftOut[1]
