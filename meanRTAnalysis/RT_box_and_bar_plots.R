@@ -66,8 +66,8 @@ barRT <- p1 + theme_bw() +
   scale_x_discrete(name='Display size') +
   scale_y_continuous(name = "Mean RT (ms)") +
   coord_cartesian(ylim=c(400, 1200)) +
-  theme(axis.title.x = element_blank(), #text(size=20), #blank(), 
-        axis.text.x  = element_blank(), #text(angle=0, size=20), #blank(),  
+  theme(axis.title.x = element_blank(), 
+        axis.text.x  = element_blank(), 
         axis.title.y = element_text(angle=90, size=36),
         axis.text.y  = element_text(size=34),
         legend.position= "none")
@@ -81,11 +81,11 @@ barErr <- p2 +  theme_bw() +
   scale_x_discrete(name='Display size') +
   scale_y_continuous(name = "Mean error rate (%)") +
   coord_cartesian(ylim=c(3, 25)) +
-  theme(axis.title.x = element_text(size=36), #blank(), 
-        axis.text.x  = element_text(angle=0, size=34), #blank(),  
+  theme(axis.title.x = element_text(size=36),
+        axis.text.x  = element_text(angle=0, size=34), 
         axis.title.y = element_text(angle=90, size=36),
         axis.text.y  = element_text(size=34),
-        legend.position= c(.20, .85),  #'none'
+        legend.position= c(.20, .85),  
         legend.title = element_text(size=24),
         legend.text = element_text(size=24),
         legend.key.size = unit(1.2, "lines"),
@@ -180,8 +180,8 @@ barErr <- p2 +  theme_bw() +
   scale_x_discrete(name='Display size') +
   scale_y_continuous(name = "Mean error rate (%)") +
   coord_cartesian(ylim=c(0, 8)) +
-  theme(axis.title.x = element_text(size=36), #blank(), 
-        axis.text.x  = element_text(angle=0, size=34), #blank(),  
+  theme(axis.title.x = element_text(size=36), 
+        axis.text.x  = element_text(angle=0, size=34), 
         axis.title.y = element_text(angle=90, size=36),
         axis.text.y  = element_text(size=34),
         legend.position= c(.80, .85),  #'none'
@@ -201,8 +201,8 @@ p3 <- ggplot(boxRT.Err.Absent,
 boxrt <- p3 + theme_bw() +
   scale_x_discrete(name='Display size') +
   scale_y_continuous(name = "RT (ms)") + 
-  theme(axis.title.x = element_blank(), #text(size=20), #blank(), 
-        axis.text.x  = element_blank(), #text(angle=0, size=20), #blank(),  
+  theme(axis.title.x = element_blank(),
+        axis.text.x  = element_blank(),
         axis.title.y = element_text(angle=90, size=36),
         axis.text.y  = element_text(size=34),
         legend.position= "none")
@@ -215,8 +215,8 @@ p4 <- ggplot(boxRT.Err.Absent,
 boxErr <- p4 + theme_bw() +
   scale_x_discrete(name='Display size') +
   scale_y_continuous(name = "Error rate (%)") + 
-  theme(axis.title.x = element_text(size=36), #blank(), 
-        axis.text.x  = element_text(angle=0, size=34), #blank(),  
+  theme(axis.title.x = element_text(size=36), 
+        axis.text.x  = element_text(angle=0, size=34), ,  
         axis.title.y = element_text(angle=90, size=36),
         axis.text.y  = element_text(size=34),
         legend.position= "none")  
