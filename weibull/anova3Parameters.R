@@ -9,8 +9,7 @@ source('./functions/rm.anova.R')
 source('./functions/eta2.R')
 source('./functions/eta2Size.R')
 source('./functions/wb.anova.R')
-
-loadedPackages <-c("plyr", "MASS", "timeDate", "timeSeries", "fBasics", "plotrix", "car", "pwr", "ggplot2", "grid", "FAdist", "reshape2") 
+loadedPackages <-c("plyr", "car", "reshape2") 
 suppressPackageStartupMessages(lapply(loadedPackages, require, character.only=TRUE));
 
 # Re-sequence the task level --------------------------------
@@ -29,6 +28,12 @@ size <- factor(c("size3", "size6", "size12", "size18"),
 idata <- data.frame(size)
 
 # Results ----------------------------------------------------------
+# Note that wb.anova has subsetted as containing present trials only
 scaleOut <- wb.anova('scale')
 shapeOut <- wb.anova('shape')
 shiftOut <- wb.anova('shift')
+
+scaleOutA <- wb.anova('scale', trials='absent')
+shapeOutA <- wb.anova('shape', trials='absent')
+shiftOutA <- wb.anova('shift', trials='absent')
+
