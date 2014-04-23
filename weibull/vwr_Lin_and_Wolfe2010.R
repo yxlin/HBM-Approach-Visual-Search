@@ -28,9 +28,9 @@ wbdfPS <- subset(wbdf, target == "present" & task == "S")
 
 rm(list=setdiff(ls(), c("wbdf", "wbdfPF", "wbdfPC", "wbdfPS")))
 
-# Load private functions
+# Load functions
 source("./functions/multiplot.R")
-source("./functions/vw2.R")
+source("./functions/vw2.R")  # a modified routine originally written by Felix Schönbrodt
 
 # Calculating shift, shape and scale  ------------------------------
 pshiftPF <- vwReg(shift~size, wbdfPF, spag=T, 
