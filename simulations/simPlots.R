@@ -1,10 +1,10 @@
-# Load packages -----------------------------------------------------------
+# Load packages ----------------------------------------------------
 loadedPackages <-c("plyr", "MASS", "timeDate", "timeSeries", "fBasics", "plotrix", "car", "pwr", "ggplot2", "grid", "FAdist", "reshape2") 
 suppressPackageStartupMessages(lapply(loadedPackages, require, character.only=TRUE));
 rm(list=ls())
 
 
-# True values -------------------------------------------------------------
+# True values -------------------------------------------------------
 # Gaussian 
 mu <- 1000; sigma <- 100
 tMnorm <- mu/1000 
