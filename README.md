@@ -6,5 +6,5 @@ Using HBM to test Palmer et al's (2011) and Wolfe et al's (2010) benchmark visua
 This work is submitted to be reviewed. Please inform the authors, if you find anything (R codes or texts) here is useful for your work and wish to use it. I am very welcome for any comments that help me to 
 improve the work. If you find any faults or mistakes I made here, please drop me an email. 
 
-We thank Evan Palmer and Jeremy Wolfe kindly provide their visual search data at 
+We thank Jeremy Wolfe and Evan Palmer kindly provide their visual search data at 
 http://search.bwh.harvard.edu/new/data_set.html, as well as their permission for us to use the data set. 
