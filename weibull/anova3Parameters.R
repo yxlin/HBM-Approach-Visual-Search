@@ -22,18 +22,12 @@ x1$task <- ifelse(x1$task == "Feature", "F",
                   ifelse(x1$task == "Conj", "C", "S"))
 x1 <- within(x1, task <- factor(task, levels = c("F", "C", "S") ))
 
-# Prepare for using Anova in car package ---------------------
-size <- factor(c("size3", "size6", "size12", "size18"), 
-               levels=c("size3", "size6", "size12", "size18"))
-idata <- data.frame(size)
-
 # Results ----------------------------------------------------------
-# Note that wb.anova has subsetted as containing present trials only
-scaleOut <- wb.anova('scale')
-shapeOut <- wb.anova('shape')
-shiftOut <- wb.anova('shift')
+scaleOut <- wb.anova(df=x1, parameter="scale", trials="present")
+shapeOut <- wb.anova(df=x1, parameter="shape", trials="present")
+shiftOut <- wb.anova(df=x1, parameter="shift", trials="present")
 
-scaleOutA <- wb.anova('scale', trials='absent')
-shapeOutA <- wb.anova('shape', trials='absent')
-shiftOutA <- wb.anova('shift', trials='absent')
+scaleOutA <- wb.anova(df=x1, parameter="scale", trials="absent")
+shapeOutA <- wb.anova(df=x1, parameter="shape", trials="absent")
+shiftOutA <- wb.anova(df=x1, parameter="shift", trials="absent")
 
