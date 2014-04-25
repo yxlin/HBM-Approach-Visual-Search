@@ -1,4 +1,4 @@
-#-------------------------------------------------------
+# Disclaimer----------------------------------------------------
 # Author:      Yishin Lin
 # Date:        20 October, 2013
 # Description: This file drew qqnorm for each cell at RT 
