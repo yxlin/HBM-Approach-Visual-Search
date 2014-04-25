@@ -1,15 +1,17 @@
-#-------------------------------------------------------
+# Disclaimer----------------------------------------------------
 # Author:      Yishin Lin
 # Date:        20 October, 2013
 # Description: This file draws histogram overplotted with 
 # density plot using RT mean per cell at the participant 
 # level
 rm(list=ls())
+
+# Load data and packages ----------------------------------------------
 load('./data/mydata/avgFC.RData')
 load('./data/mydata/avgS.RData')
 library(ggplot2); library(grid)
 
-## Preparing for bar plots--------------------------------
+# Preparing for bar plots--------------------------------
 avg1 <- rbind(avgFC, avgS)
 avg1$task <- factor(avg1$task, levels=c('F','C','S'),
       labels=c('F','C','S'))
@@ -19,7 +21,7 @@ avg1$taskTgt <- factor(avg1$taskTgt, levels=c('FP','FA',
                                               'CP', 'CA',
                                               'SP', 'SA'))
 
-## Plot figures--------------------------------
+# Plot figures--------------------------------
 baseP <- ggplot(avg1, aes(x=mean)) +   
          geom_histogram(aes(y = ..density..), binwidth=80, 
                         fill="grey", colour="black") + 
@@ -37,9 +39,9 @@ m <- baseP +  theme_bw() +
      strip.background = element_blank(),
      strip.text.y = element_text(size=30, angle=0))
 
-## Save output to a jpg file--------------------------------
-# jpeg(filename = "./figures/histSubjLevel.jpeg",
-#      width = 1280, height = 1024, units = "px", pointsize = 8,
-#      quality = 95, bg = "white")
+# Save output to a jpg file--------------------------------
+jpeg(filename = "./figures/densityAndcdfPlots/histSubjLevel.jpeg",
+     width = 1280, height = 1024, units = "px", pointsize = 8,
+     quality = 100, bg = "white")
 m; 
-# dev.off()
+dev.off()
