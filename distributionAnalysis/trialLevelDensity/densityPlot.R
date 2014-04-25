@@ -34,8 +34,6 @@ den <- den + geom_density(fill=NA, size=.5) +
           legend.title = element_text(size=34),
           legend.text = element_text(size=30))
 
-# jpeg(filename = "./figures/densityTrialLevel.jpeg",
-#      width = 1280, height = 1024, units = "px", pointsize = 8,
-#      quality = 100, bg = "white")
+jpeg(filename = "./figures/densityAndcdfPlots/densityTrialLevel.jpeg",    width = 1280, height = 1024, units = "px", pointsize = 8,quality = 100, bg = "white")
 den;
-# dev.off()
+dev.off()
