@@ -129,7 +129,7 @@ estimateDf2$dist <- rep( rep(c("normal", "exG", "wald", "weibull"), each=60), 10
 estimateDf2$para <- rep( rep( rep(c("shape", "scale", "thres"), each=20), 4), 10)
 estimateDf2$trial <- estimateDf2$.id
 estimateDf2 <- estimateDf2[,-c(1,3)]
-# save(estimateDf2,lf, file="./data/simData/simulation-2.RData")
+# save(estimateDf2,lf, file="./data/simData/simulation.RData")
 
 # Not run ------------------------------------------------------------
 # ml estimation
