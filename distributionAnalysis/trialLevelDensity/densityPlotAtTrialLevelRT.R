@@ -23,16 +23,16 @@ den <- den + geom_density(fill=NA, size=.5) +
     scale_x_continuous(breaks=seq(0, 10000, 1500), name="RT (ms)") + 
     scale_y_continuous(breaks=seq(0, 1, .004), name ="Density") +
     coord_cartesian(xlim = c(0, 4300)) +
-    theme(axis.title.x = element_text(size=20), 
-          axis.text.x  = element_text(angle=70, size=20, vjust = 1, hjust = 1),   
-          axis.title.y = element_text(angle=90, size=20),
-          axis.text.y  = element_text(size=20),
-          strip.text.x = element_text(size=20, angle=0),
-          strip.text.y = element_text(size=20, angle=0),
+    theme(axis.title.x = element_text(size=34), 
+          axis.text.x  = element_text(angle=70, size=30, vjust = 1, hjust = 1),   
+          axis.title.y = element_text(angle=90, size=30),
+          axis.text.y  = element_text(size=34),
+          strip.text.x = element_text(size=30, angle=0),
+          strip.text.y = element_text(size=30, angle=0),
           strip.background = element_blank(), 
           legend.position= "none", 
-          legend.title = element_text(size=20),
-          legend.text = element_text(size=20))
+          legend.title = element_text(size=34),
+          legend.text = element_text(size=30))
 
 # jpeg(filename = "./figures/densityTrialLevel.jpeg",
 #      width = 1280, height = 1024, units = "px", pointsize = 8,
