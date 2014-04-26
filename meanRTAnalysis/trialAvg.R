@@ -99,10 +99,10 @@ two5ER <- (two5Err/(two5Err+two5Corr))*100
 
 
 # Miss Errors -------------------------------------------------------------
-# Hit: target present - press present - correct
-# Correct rejection: target absent - present absent - correct
-# Miss errors: target present - press absent - incorrect
-# False alarm: target absent - press present - incorrect
+# Hit: target present - press present key - correct
+# Correct rejection: target absent - press absent key - correct
+# Miss errors: target present - press absent key - incorrect
+# False alarm: target absent - press present key - incorrect
 featSignal <- signalDetection(featAll)
 conjSignal <- signalDetection(conjAll)
 two5Signal <- signalDetection(two5All)
