@@ -1,8 +1,7 @@
 # Load packages ----------------------------------------------------
-loadedPackages <-c("plyr", "MASS", "timeDate", "timeSeries", "fBasics", "plotrix", "car", "pwr", "ggplot2", "grid", "FAdist", "reshape2") 
+loadedPackages <-c("plyr", "ggplot2", "grid", "reshape2") 
 suppressPackageStartupMessages(lapply(loadedPackages, require, character.only=TRUE));
 rm(list=ls())
-
 
 # True values -------------------------------------------------------
 # Gaussian 
@@ -29,7 +28,6 @@ shape <- 2.0  # gamma
 scale <- 220/1000   # beta
 shift <- 800/1000  # alpha
 
-
 # Convert to mean, variance and skewness-----------------------------
 tMWb <- scale * gamma(1+(1/shape)) + shift
 tVWb <- scale^2 * ( gamma(1+ (2/shape)) - gamma(1 + (1/shape))^2 )
@@ -38,11 +36,10 @@ numerator <- 2 * (gamma(1+1/shape))^3 - 3*gamma(1+1/shape) * gamma(1+2/shape) + 
 denominator <- ( gamma(1+2/shape) - (gamma(1+1/shape))^2 )^(3/2)
 tSWb <- numerator/denominator
 
-
-# Load data ---------------------------------------------------------------
-load("../data/simData/simWB.RData")
-load("../data/simData/simulation.RData")
-source("../functions/summarise.R")
+# Load data ----------------------------------------------------------
+load("./data/simData/simWB.RData")
+load("./data/simData/simulation.RData")
+source("./functions/summarise.R")
 
 simDesc <- ddply(sim, .(trialn, dist, subj), summarise,
                  m.rt=scale * gamma(1 + 1/shape) + shift, 
@@ -57,8 +54,7 @@ simexG <- subset(simDesc, dist == "exG")
 simW <- subset(simDesc, dist == "wald")
 simWb <- subset(simDesc, dist == "weibull")
 
-
-# Calculate bias scores ---------------------------------------------------
+# Calculate bias scores ---------------------------------------------
 mbias.n <- abs(simN$m.rt -  tMnorm)
 vbias.n <- abs(simN$v.rt -  tVnorm)
 sbias.n <- abs(simN$s.rt -  0)
@@ -76,18 +72,10 @@ vbias.Wb <- abs(simWb$v.rt -  tVWb)
 sbias.Wb <- abs(simWb$s.rt -  tSWb) 
 
 
-biasdfBHM <- data.frame(Bias = c(mbias.n, mbias.exG, mbias.W, mbias.Wb,
-                                 vbias.n, vbias.exG, vbias.W, vbias.Wb,
-                                 sbias.n, sbias.exG, sbias.W, sbias.Wb),
-                        tn = rep(simN$trialn, 12),
-                        subj = rep(simN$subj, 12),
-                        Distribution = rep( rep(c("normal", "ex-Gaussian", 
-                                                  "wald", "weibull"), each=200), 3),
-                        stat = rep( c("Mean", "Variance", "Skewness"), each=800))
+biasdfBHM <- data.frame(Bias = c(mbias.n, mbias.exG, mbias.W, mbias.Wb,vbias.n, vbias.exG, vbias.W, vbias.Wb,sbias.n, sbias.exG, sbias.W, sbias.Wb),tn = rep(simN$trialn, 12),subj = rep(simN$subj, 12),Distribution = rep( rep(c("normal", "ex-Gaussian", "wald", "weibull"), each=200), 3),stat = rep( c("Mean", "Variance", "Skewness"), each=800))
 
 mleDf <- as.data.frame(estimateDf2)
 mleDf$trialn <- as.numeric(mleDf$trial)
-
 
 mleavg <- dcast(mleDf, dist + trialn + subj ~ para, value.var="value")
 
@@ -168,15 +156,13 @@ bp <- bp + geom_vline(xintercept = 120, linetype="longdash", color="bisque4") +
         legend.key.height=unit(3, "line"),
         legend.key.width=unit(3, "line"))
 
-jpeg(filename = "../figures/simBias.jpeg",
-     width = 1024, height = 768, units = "px", pointsize = 8,
-     quality = 95, bg = "white")
+jpeg(filename = "./figures/simulation/simBias.jpeg",
+     width = 1280, height = 1024, units = "px", pointsize = 8,
+     quality = 100, bg = "white")
 bp;
 dev.off()
 
-
-
-# Dot plot ----------------------------------------------------------------
+# Comparing HBM to MLE------------------------------------------
 dfSkew <- subset(biasdf, stat == "Skewness")
 dfSkewS <- summarySE(dfSkew, measurevar="Bias", groupvar=c("Method", "tn", "Distribution"))
 names(dfSkewS) <- c("Method", "tn", "Distribution", "N", "Bias",
@@ -191,8 +177,8 @@ skewP <- ggplot(dfSkewS, aes(x=tn, y=Bias,
   geom_point(size=7) + geom_line(size=2) +  facet_grid(.~Distribution)
 skewP <- skewP + scale_x_continuous(name="Cell size") + 
     scale_linetype_manual(values=c(1, 4)) +
-    theme(axis.title.x = element_text(size=30), #element_blank(), 
-          axis.text.x  = element_text(angle=45, vjust = 1, hjust = 1, size=26), #element_blank()
+    theme(axis.title.x = element_text(size=30),  
+          axis.text.x  = element_text(angle=45, vjust = 1, hjust = 1, size=26), 
           axis.title.y = element_text(angle=90, size=30),
           axis.text.y  = element_text(size=26),
           strip.text.x = element_text(size=30, angle=0),
@@ -204,8 +190,8 @@ skewP <- skewP + scale_x_continuous(name="Cell size") +
           legend.key.height=unit(3, "line"),
           legend.key.width=unit(3, "line"))
 
-jpeg(filename = "../figures/simSkewBias.jpeg",
-      width = 1024, height = 768, units = "px", pointsize = 8,
+jpeg(filename = "./figures/simulation/simSkewBias.jpeg",
+      width = 1280, height = 1024, units = "px", pointsize = 8,
        quality = 95, bg = "white")
 skewP; 
 dev.off()
