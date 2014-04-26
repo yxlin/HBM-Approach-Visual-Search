@@ -1,7 +1,6 @@
 # Load packages and functions ---------------------------------------
-loadedPackages <-c("plyr",  "gamlss", "gamlss.dist", "fBasics", "plotrix", "ggplot2", "grid", "statmod", "FAdist", "reshape2") 
+loadedPackages <-c("plyr",  "gamlss", "statmod", "reshape2", "timeSeries", "FAdist") 
 suppressPackageStartupMessages(lapply(loadedPackages, require, character.only=TRUE));
-
 rm(list=setdiff(ls(), c()))
 source("./functions/maximumLikeWeibull.R")
 
@@ -10,29 +9,21 @@ source("./functions/maximumLikeWeibull.R")
 mu <- 1000; sigma <- 100
 exp.rt.norm <- mu 
 exp.var.norm <- sigma^2 
-NTrials <- seq(20, 500, by=50)  # How many trial in a cell?                
-NSubjs <- 20                    # How many participants?
-n <- NTrials*NSubjs             # Total trial in a condition         
+NTrials <- seq(20, 500, by=50)               
+NSubjs <- 20                    
+n <- NTrials*NSubjs               
 
 # Generate simulated data in 10 different situations----------
-# 1. 20 x 20;   2. 20 x 70;  3. 20 x 120; 4. 20 x 170
-# 5. 20 x 220;  6. 20 x 270; 7. 20 x 320; 8. 20 x 370
-# 9. 20 x 420; 10. 20 x 470
-# ------------------------------------------------------------
-# and store them in a list object. Each sub-list contains a
-# data set.
 y0 <- lapply( 1:length(n), function(i) rnorm(n[i], mean=mu, sd=sigma) )
 
-
-# 2. exGaussian; this step takes very long. Should import a C routine
-# to run exGauss.
+# 2. exGaussian; this step will take some time---------------------- 
 mu <- 910.56; tau <- 89.443; sigma <- 44.721
 y1 <- lapply( 1:length(n), function(i) rexGAUS(n[i], mu=mu, nu=tau, sigma=sigma) )
 exp.rt.exG <- mu + tau
 exp.var.exG <- sigma^2 + tau^2
 skew.exG <- (2*tau^3) / ((sigma^2+tau^2)^(3/2))
 
-# 3. inverse Gaussian, or called Wald
+# 3. inverse Gaussian, or called Wald-------------------------------
 mu <- 275; lambda <- 2000; kappa <- 725
 y2 <- lapply( 1:length(n), function(i) {
               rinvgauss(n[i], mu=mu, lambda=lambda) + kappa
@@ -42,7 +33,7 @@ exp.rt.wald <- mu + kappa
 exp.var.wald <- (mu^3) / lambda
 skew.wald <- 3*sqrt(mu/lambda)
 
-# 4. three-parameter Weibull 
+# 4. three-parameter Weibull --------------------------------------
 # shape = gamma (or a), scale = beta (or b) and thres=shift=alpha (or m)
 shape <- 2.0  # gamma
 scale <- 220  # beta
@@ -64,7 +55,6 @@ realMeans <- c(exp.rt.norm, exp.rt.exG, exp.rt.wald, exp.rt.weibull)
 realVars <- c(exp.var.norm, exp.var.exG, exp.var.wald, exp.var.weibull)
 realSkew <- c(0, skew.exG, skew.wald, skew.weibull)
 
-
 # Take out each data sets (different Ns) sequentially.  
 lf <- list()
 for(i in 1:length(n)){
@@ -73,7 +63,8 @@ for(i in 1:length(n)){
   names(tmp) <- c("normal", "exG", "wald", "weibull", "subj")
   lf[[i]] <- tmp
 }
-names(lf) <- NTrials; str(lf)
+names(lf) <- NTrials; 
+# str(lf)
 
 # Calculate simulated means ------------------------------------------
 # tmp1 is a data frame. The first 4 columns are simulated RTs 
@@ -103,7 +94,6 @@ meanMatrix <- rbind(tmp1, c(realMeans, 99, 10^6))
 varMatrix <- rbind(tmp2, c(realVars, 99, 10^6))
 skewMatrix <- rbind(tmp3, c(realSkew, 99, 10^6))
 
-
 tmpP2 <- llply(lf, function(x){  
     # 1. cut each list and deal them separately
     ddply(x, .(subj), function(y) { 
@@ -113,7 +103,7 @@ tmpP2 <- llply(lf, function(x){
       df <- y[,1:4]
     # 4. do the maximum likelihood estimation for each column
     # using 3-parameter Weibull function
-      apply(df, 2, thetahat.weibull)
+      suppressWarnings(apply(df, 2, thetahat.weibull))
       }
     )
   } 
@@ -129,30 +119,4 @@ estimateDf2$dist <- rep( rep(c("normal", "exG", "wald", "weibull"), each=60), 10
 estimateDf2$para <- rep( rep( rep(c("shape", "scale", "thres"), each=20), 4), 10)
 estimateDf2$trial <- estimateDf2$.id
 estimateDf2 <- estimateDf2[,-c(1,3)]
-# save(estimateDf2,lf, file="./data/simData/simulation.RData")
-
-# Not run ------------------------------------------------------------
-# ml estimation
-# tmpP <- ddply(lf[[1]], .(subj), function(x) { 
-#        df <- x[,1:4]
-#        apply(df, 2, thetahat.weibull)
-#   }
-# )
-# names(tmpP) <- c("subj",  "nshape", "nscale", "nthres",
-#                  "gshape", "gscale", "gthres",
-#                  "wshape", "wscale", "wthres",
-#                  "wbshape", "wbscale", "wbthres")
-# estimateDf <- melt(tmpP, id.vars="subj")
-# estimateDf$dist <- rep(c("normal", "exG", "wald", "weibull"), each=60)
-# estimateDf$para <-rep( rep(c("shape", "scale", "thres"), each=20), 4)
-
-# for(i in 1:length(tmpP2)){
-# names(tmpP2[[i]]) <- c("subj",  "nshape", "nscale", "nthres",
-#                  "gshape", "gscale", "gthres",
-#                  "wshape", "wscale", "wthres",
-#                  "wbshape", "wbscale", "wbthres")
-# }
-
-# estimateDf2 <- llply(tmpP2, function(x){
-#   melt(x, id.vars="subj")
-# })
+save(estimateDf2,lf, file="./data/simData/simulation.RData")
