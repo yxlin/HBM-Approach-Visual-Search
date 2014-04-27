@@ -6,14 +6,14 @@
 rm(list=ls())
 library(ggplot2); library(grid); library(RColorBrewer)
 
-# Load data and functions -------------------------------------------------
+# Load data and functions ---------------------------------------------
 load('./data/myData/avgFC.RData')
 load('./data/myData/avgS.RData')
 source("./functions/summarise.R")
 source("./functions/multiplot.R")
 
 
-# Summarise data ----------------------------------------------------------
+# Summarise data ------------------------------------------------------
 avgMiss1 <- summarySEwithin(avgFC, measurevar="miss", 
                            withinvars=c("size", "task"),
                            idvar="subj")
