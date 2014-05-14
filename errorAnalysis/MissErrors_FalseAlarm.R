@@ -6,14 +6,14 @@
 rm(list=ls())
 library(ggplot2); library(grid); library(RColorBrewer)
 
-# Load data and functions ---------------------------------------------
+# Load data and functions -------------------------------------------
 load('./data/myData/avgFC.RData')
 load('./data/myData/avgS.RData')
 source("./functions/summarise.R")
 source("./functions/multiplot.R")
 
 
-# Summarise data ------------------------------------------------------
+# Summarise data ----------------------------------------------------
 avgMiss1 <- summarySEwithin(avgFC, measurevar="miss", 
                            withinvars=c("size", "task"),
                            idvar="subj")
@@ -67,7 +67,7 @@ avg <- within(avg, colourNames <- factor(colourNames, levels =
     "3-False Alarm", "6-False Alarm", "12-False Alarm", "18-False Alarm")))
 
 
-# Plot figures ------------------------------------------------------------
+# Plot figures ------------------------------------------------------
 p3 <- ggplot(avg, aes(x=task, y=value, fill=colourNames)) +
   geom_bar(position=position_dodge(.9), colour="black", stat="identity") +
   geom_errorbar(position=position_dodge(.9), width=.25, 
