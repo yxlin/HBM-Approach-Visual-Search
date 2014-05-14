@@ -7,3 +7,15 @@ This work is submitted to be reviewed. Please inform us, if you find anything (R
 
 We thank Jeremy Wolfe and Evan Palmer kindly provide their visual search data at 
 http://search.bwh.harvard.edu/new/data_set.html, as well as their permission for us to use the data set. 
+
+
+HBM-Approach-Visual-Search by Copyright (c) 2014 Yi-Shin Lin  is licensed under a 
+[Creative Commons Attribution-NonCommercial 4.0 International License.](http://creativecommons.org/licenses/by-nc/4.0/)
+
+Based on a [work](https://github.com/yxlin/HBM-Approach-Visual-Search) at https://github.com/yxlin/HBM-Approach-Visual-Search
+
+![alt text](http://i.creativecommons.org/l/by-nc/4.0/88x31.png)
+
+
+
+
