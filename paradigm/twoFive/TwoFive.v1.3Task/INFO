@@ -1,0 +1,3 @@
+This program tests digital 2 versus 5.  The stimuli are presented in circular fashion with diameter of 145 (see searchTabFun.R).  Two covariates are examined.  First is target present versus absent (in fact it should be considered as two separate cognitive processes).  The second is the set size (3, 6, 12, 18).  See search.R for implementation details.  The task includes 8 practice trials and 800 test trials.
+
+This task replicates Palmer, Wolfe, Horowitz et al. (2011) JEP study.  

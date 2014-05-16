@@ -1,0 +1,49 @@
+-------------------------------------------------------------------------------
+Start experiment date and time: 09 March 2013 15:48
+script: d10.psy
+executable: /media/iMatP1/ResProjs/psychophysics/wolfeReplication/tasks/circularConjunction.v1.0/d10
+PsyToolkit: 1.2.7
+Resolution: 1152 864
+Fullscreen mode | Vsync: Yes | Realtime: No
+-------------------------------------------------------------------------------
+Start experiment date and time: 09 March 2013 15:49
+script: d10.psy
+executable: ./d10
+PsyToolkit: 1.3.1
+Resolution: 1152 864
+Fullscreen mode | Vsync: No | Realtime: No
+-------------------------------------------------------------------------------
+Start experiment date and time: 09 March 2013 15:50
+script: d10.psy
+executable: ./d10
+PsyToolkit: 1.3.1
+Resolution: 1152 864
+Fullscreen mode | Vsync: No | Realtime: No
+-------------------------------------------------------------------------------
+Start experiment date and time: 09 March 2013 15:50
+script: d10.psy
+executable: ./d10
+PsyToolkit: 1.3.1
+Resolution: 1152 864
+Fullscreen mode | Vsync: No | Realtime: No
+-------------------------------------------------------------------------------
+Start experiment date and time: 09 March 2013 15:51
+script: d10.psy
+executable: ./d10
+PsyToolkit: 1.3.1
+Resolution: 1152 864
+Fullscreen mode | Vsync: No | Realtime: No
+-------------------------------------------------------------------------------
+Start experiment date and time: 09 March 2013 15:51
+script: d10.psy
+executable: ./d10
+PsyToolkit: 1.3.1
+Resolution: 1152 864
+Window mode | Vsync: No | Realtime: No
+-------------------------------------------------------------------------------
+Start experiment date and time: 09 March 2013 15:52
+script: d10.psy
+executable: ./d10
+PsyToolkit: 1.3.1
+Resolution: 1152 864
+Window mode | Vsync: No | Realtime: No
