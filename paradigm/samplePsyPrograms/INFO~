@@ -1,3 +1,0 @@
-This program tested Wolfe et al.'s (2010) visual search paradigms. Search items were presented on a invisible circle with diameter set in searchTabFun.R.  
-
-Two factors were examined.  First is target present versus absent (in fact it should be considered as two separate cognitive processes).  The second is the set size (4, 8, 12, 16).  See search.R for implementation details.  The task includes 8 practice trials and 800 test trials.  
