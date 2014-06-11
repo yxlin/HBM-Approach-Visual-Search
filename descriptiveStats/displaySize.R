@@ -1,7 +1,7 @@
 # Disclaimer --------------------------------------------
 # Author:      Yishin Lin
 # Date:        24 December, 2013
-# Description: This script calculate descriptive 
+# Description: This script calculates descriptive 
 # statistics in the discussion seciton
 rm(list=ls())
 load('./data/myData/avgFC.RData')
