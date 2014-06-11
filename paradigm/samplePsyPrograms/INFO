@@ -1,3 +1,9 @@
-1. This program tested Wolfe et al.'s (2010) visual search paradigms. Search items were presented on a invisible circle with diameter set in searchTabFun.R.  
-2. Two factors were examined.  Firstly, we investigated target present versus absent. Secondly, we compared different display sizes (4, 8, 12, vs. 16).  See search.R for implementation details.  
-3. The task includes 8 practice trials and 800 test trials.  
+1. This program tested Wolfe et al.'s (2010) visual search paradigms. Search 
+items were presented on an invisible circle with diameter set in 
+searchTabFun.R.  
+
+2. Two factors were examined.  Firstly, we investigated target present 
+versus absent. Secondly, we compared different display sizes 
+(4, 8, 12, vs. 16).  See search.R for implementation details.  
+
+3. The task included 8 practice trials and 800 test trials.  

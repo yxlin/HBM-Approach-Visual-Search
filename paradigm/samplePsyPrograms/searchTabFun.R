@@ -2,7 +2,8 @@
 # Author: Yishin Lin
 # Date: 04 January, 2012. 
 # Description: Functions to help generate stimulus table 
-# modified from Stoet's visual search example
+# modified from Stoet's visual search example (pls see the report 
+# for detailed reference)
 
 printstimuli <- function( stimuli,positions)
 {
