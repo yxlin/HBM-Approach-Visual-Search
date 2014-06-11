@@ -30,7 +30,7 @@ zeros[i,j] ~ dpois(phi[i,j])
 #--------------------------------#
 # beta prior (shape)             #
 #--------------------------------#
-# to insure the posterior moments exist for the theta[i]
+# to ensure the posterior moments exist for the theta[i]
 is.censored[i] ~ dinterval(beta[i], 0.01)   
 beta[i] ~ dgamma(eta1,eta2)   # I(0.01,), BUGS's old way to truncate  
 
