@@ -14,7 +14,6 @@ ylinrt$taskTgt <- paste0(ylinrt$task,ylinrt$target)
 ylinrt$taskTgt <- factor(ylinrt$taskTgt, levels=c('FP','FA', 
                                               'CP', 'CA',
                                               'SP', 'SA'))
-
 ## Plot figures--------------------------------
 den <- ggplot(ylinrt, aes(x=rt, colour=as.numeric(subjNum), 
                        group=as.numeric(subjNum)))
