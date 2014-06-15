@@ -3,7 +3,7 @@
 # Date: 2 Apr, 2014
 # Description: Plot simulation data 
 
-loadedPackages <-c("plyr", "MASS", "timeDate", "timeSeries", "fBasics", "plotrix", "car", "pwr", "ggplot2", "grid", "FAdist", "reshape2") 
+loadedPackages <-c("plyr", "ggplot2", "grid") 
 suppressPackageStartupMessages(lapply(loadedPackages, require, character.only=TRUE));
 rm(list=ls())
 library(plyr);library(ggplot2);library(grid)
