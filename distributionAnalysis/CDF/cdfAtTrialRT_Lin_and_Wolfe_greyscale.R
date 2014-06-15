@@ -25,9 +25,7 @@ ecdfylinrt$dataset <- "Lin, Heinke & Humphreys (2014)"
 ecdfwolfe$dataset <- "Wolfe, Palmer & Horowitz (2010)"
 twoDatasets <- rbind(ecdfylinrt,ecdfwolfe)
 
-## --------------------------------
-## Drawing
-## --------------------------------
+## Draw figure --------------------------------
 ecdfP2 <- ggplot(twoDatasets, aes(rt, ecdf, colour = task))
 ecdfP2 <- ecdfP2 +  geom_step(subset = .(rt > 0), size=2) + 
   facet_grid(size~dataset, as.table = F) +
@@ -36,9 +34,6 @@ ecdfP2 <- ecdfP2 +  geom_step(subset = .(rt > 0), size=2) +
              color="black") +
   geom_hline(yintercept = .95, linetype="longdash", 
              color="black") +
-  #   geom_vline(xintercept = 1300, linetype="longdash", color="darkorchid4") +
-  #   geom_vline(xintercept = 1800, linetype="longdash", color="darkblue") +
-  #   geom_vline(xintercept = 2600, linetype="longdash", color="black") +
   scale_y_continuous(breaks=seq(0, 2, .40), 
                      name="Empirical CDF") + 
   scale_x_continuous(name="RT (ms)") + 
@@ -50,7 +45,7 @@ ecdfP2 <- ecdfP2 +  geom_step(subset = .(rt > 0), size=2) +
         axis.text.y  = element_text(angle=0, size=30),
         strip.text.x = element_text(angle=0, size=34),
         strip.text.y = element_text(angle=0, size=34),
-        strip.background = element_blank(), # rect(colour="red", fill="#CCCCFF")), 
+        strip.background = element_blank(), 
         legend.position= c(.90, .10),
         legend.title = element_text(size=34),
         legend.text = element_text(size=30))
