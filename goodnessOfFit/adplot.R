@@ -38,7 +38,6 @@ pAD <- ggplot(gofSum, aes(x=size, y=ad, linetype=method,
             aes(group=method), size=2)+
   theme_bw() + facet_grid(.~task) +
   scale_linetype_manual(values=c(1, 6)) +
-  #scale_colour_manual(values=c("#999999", "#E69F00")) +
   scale_x_discrete(name='Display size') +
   scale_y_continuous(name = "Goodness-of-fit statistic") + 
   coord_cartesian(ylim=c(25, 110)) + 
@@ -52,8 +51,9 @@ pAD <- ggplot(gofSum, aes(x=size, y=ad, linetype=method,
         legend.position= c(.20, .93),  
         legend.title = element_text(size=34),
         legend.text = element_text(size=30),
-        legend.key.size = unit(1.2, "lines"),
-        legend.key.width = unit(1.2, "cm"))
+        legend.key.size = unit(3.5, "lines"),
+        legend.key.width = unit(1.5, "cm"))
+
 
 jpeg(filename = "./figures/adplotLine.jpeg",
      width = 1280, height = 1024, units = "px", pointsize = 8,
