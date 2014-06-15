@@ -2,12 +2,11 @@
 # Author: Yishin Lin
 # Date: 2 Apr, 2014
 # Description: Plot simulation data 
-
 loadedPackages <-c("plyr", "ggplot2", "grid") 
 suppressPackageStartupMessages(lapply(loadedPackages, require, character.only=TRUE));
 rm(list=ls())
-library(plyr);library(ggplot2);library(grid)
 
+# Load data -------------------------------------------------------
 load("./data/diagData/gewekeDS.RData")
 load("./data/diagData/heidelDS.RData")
 load("./data/diagData/rafteryDS.RData")
@@ -25,6 +24,7 @@ load("./data/diagData/gelmanDF.RData")
 
 source("./functions/nonparadiag.R")
 
+# Organise the data frame -----------------------------------------
 diagF <- nonparadiag(gewekeDF, heidelDF, gelmanDF, rafteryDF)
 diagC <- nonparadiag(gewekeDC, heidelDC, gelmanDC, rafteryDC)
 diagS <- nonparadiag(gewekeD, heidelD, gelmanD, rafteryD)
@@ -45,6 +45,7 @@ vlineDfC$task <- "C"
 vlineDfS$task <- "S"
 vlineDf <- rbind(vlineDfF, vlineDfC, vlineDfS)
 
+# Plot figures ----------------------------------------------------
 diagP <- ggplot(tmp, aes(x= factor(size), y = refvalue)) +
   geom_boxplot(notch=F,  outlier.colour="grey", outlier.size=3) +   
   geom_hline(aes(yintercept=vl), data=vlineDf, 
@@ -52,21 +53,19 @@ diagP <- ggplot(tmp, aes(x= factor(size), y = refvalue)) +
   facet_grid(diag~task, scale="free") + theme_bw() +
   scale_x_discrete(name='Display size') +
   scale_y_continuous(name = "Diagnostic Statistics") + 
-  theme(axis.title.x = element_text(size=30),  
-        axis.text.x  = element_text(angle=0, size=26), 
-        axis.title.y = element_text(angle=90, size=30),
-        axis.text.y  = element_text(size=26),
-        strip.text.x = element_text(size=30, angle=0), 
+  theme(axis.title.x = element_text(size=34),  
+        axis.text.x  = element_text(angle=0, size=30), 
+        axis.title.y = element_text(angle=90, size=34),
+        axis.text.y  = element_text(size=30),
+        strip.text.x = element_text(size=34, angle=0), 
         strip.background = element_blank(),
         strip.text.y = element_text(size=30, angle=90),
-        legend.position= 'none', #c(.85, .90),
-        legend.title = element_text(size=20),
-        legend.text = element_text(size=20),
-        legend.key.size = unit(1.2, "lines"),
-        legend.key.width = unit(1.2, "cm"))
-diagP
+        legend.position= 'none',
+        legend.title = element_text(size=34),
+        legend.text = element_text(size=30))
 
-jpeg(filename = "../figures/diagAll.jpeg",
-     width = 1024, height = 768, units = "px", pointsize = 8,
-     quality = 95,bg = "white")
-diagP; dev.off()
+jpeg(filename = "./figures/diagAll.jpeg",
+     width = 1280, height = 1024, units = "px", pointsize = 8,
+     quality = 100,bg = "white")
+diagP; 
+dev.off()
