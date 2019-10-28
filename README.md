@@ -13,7 +13,7 @@ Copyright (c) Yi-Shin Lin
 HBM-Approach-Visual-Search by Yi-Shin Lin, is licensed under a 
 [Creative Commons Attribution-NonCommercial 4.0 International License.](http://creativecommons.org/licenses/by-nc/4.0/)
 
-Based on a [work](https://github.com/yxlin/HBM-Approach-Visual-Search) at https://github.com/yxlin/HBM-Approach-Visual-Search
+Download the paper at [Lin, YS., Heinke, D. & Humphreys, G.W. Atten Percept Psychophys (2015) 77: 985. https://doi.org/10.3758/s13414-014-0825-x](https://link.springer.com/article/10.3758/s13414-014-0825-x)
 
 ![alt text](http://i.creativecommons.org/l/by-nc/4.0/88x31.png)
 
