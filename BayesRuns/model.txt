@@ -1,0 +1,68 @@
+
+data {
+for (i in 1:NSubj) {
+for (j in 1:NTrials){
+zeros[i,j] <- 0
+}
+zero[i] <- 0
+}
+}
+
+model
+{
+C <- 100000   # a big constant to certain phi is non-negative
+
+# Likelihood
+for (i in 1:NSubj){
+for (j in 1:NTrials){
+
+#--------------------------#
+# Weibull density          #
+#--------------------------#
+term1[i,j] <- beta[i]*log(theta[i]) + pow(y[i,j] - psi[i],beta[i])/pow(theta[i],beta[i])
+term2[i,j] <- log(beta[i]) + (beta[i]-1)*log(y[i,j] - psi[i])
+
+# zeros trick
+phi[i,j] <- term1[i,j] - term2[i,j] + C
+zeros[i,j] ~ dpois(phi[i,j])
+}
+
+#--------------------------------#
+# beta prior (shape)             #
+#--------------------------------#
+# to ensure the posterior moments exist for the theta[i]
+is.censored[i] ~ dinterval(beta[i], 0.01)   
+beta[i] ~ dgamma(eta1,eta2)   # I(0.01,), BUGS's old way to truncate  
+
+#--------------------------------#
+# theta prior (scale)            #
+#--------------------------------#
+theta[i] ~ dunif(.01, 10000)  # modify from dflat()
+
+#--------------------------#
+# pow(theta[i], beta[i])   #
+#--------------------------#
+phip[i] <- (xi1 + 1)*log(pow(theta[i],beta[i])) + xi2/pow(theta[i],beta[i]) + loggam(xi1) - xi1*log(xi2)
+zero[i] ~ dpois(phip[i])
+
+# Quote from Rouder et al.(2003, Psychometrika, p593)
+# ..., the hierarchical priors in β and θ^β yield shrinkage in all three
+# parameters.  It is not clear that a hierarchical prior on 
+# psi (shift) would yield any additional gain.
+psi[i] ~ dunif(0,minrt[i])
+}
+
+#----------------------#
+# Hyper-prior          #
+#----------------------#
+# Priors as recommended by Rouder et al (2003).
+# how the shape and scale vary across individuals within the population
+# hyperpriors on xi1,..,eta2. In Rouder et al's original code
+eta1 ~ dgamma(2,0.02)   # c1 = 2, d1 = .02 
+eta2 ~ dgamma(2,0.04)   # c2 = 2, d2 = .04
+xi1 ~ dgamma(2,0.1)     # a1 = 2, b1 = .1
+xi2 ~ dgamma(2,2.85)    # a2 = 2, b2 = 2.85
+
+}
+
+
