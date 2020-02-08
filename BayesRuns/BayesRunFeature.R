@@ -59,28 +59,33 @@ for(i in seq(along = size.seq)){
                                    .Dim = dim(rtSample)), 
                      minrt = minrt)
     
-    # Save data files as JAG format ------------------
+    ## Save data files as JAG format ------------------
+    ## Follow BRugs error messages, if you encounter installation problems
+    ## e.g., it would complain if you have not installed OpenBUGS 
     library(BRugs)
     fileNameRoot <- paste('data', size.seq[i], target.seq[j], 
                           sep='')
     BRugsName <- paste('./data/myData/BayesDataF/', 
                        fileNameRoot, 'BRugs.txt', sep='')
+    ## This step will produce a BRugs formatted data
+    ## You need to perhaps manually create a folder, 'BayesDataF'
     bugsData(dataList, fileName = BRugsName)
     detach(package:BRugs)
     
     library(R2jags)
+    ## Follow R2jags error messages, if you encounter installation problems
+    ## e.g., it would complain, if you have not installed jags
     JAGSName <- paste('./data/myData/BayesDataF/', 
                       fileNameRoot, 'JAGS.txt', sep='')
     bugs2jags(BRugsName, JAGSName)
     
-    # Set initial prior values------------------------------
-    # for each participant, set prior beta=0.9;  lambda=12, 
-    # theta (scale) = lambda^(-1/beta); 
-    # psi = min(each particpant) - min in the group
+    ## Set initial prior values------------------------------
+    ## for each participant, set prior beta=0.9;  lambda=12, 
+    ## theta (scale) = lambda^(-1/beta); 
+    ## psi = min(each particpant) - min in the group
 	  thetaInit <-  runif(NSubj, .3, 4)  
 	  betaInit <- runif(NSubj, 0.9, 2)
-	  psiInit <- dataPerSubj.ordered$Min -  
-      min(dataPerSubj.ordered$Min)
+	  psiInit <- dataPerSubj.ordered$Min - min(dataPerSubj.ordered$Min)
 
 
 # Initialization ----------------------------------------------
